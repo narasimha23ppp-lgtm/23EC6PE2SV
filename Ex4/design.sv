@@ -1,17 +1,29 @@
 //------------------------------------------------------------------------------
-//File       : mux2to1.sv
+//File       : alu.sv
 //Author     : Narasimha/1BM23EC183
 //Created    : 2026-02-2
-//Module     : mux2to1
+//Module     : alu
 //Project    : SystemVerilog and Verification (23EC6PE2SV),
 //Faculty    : Prof. Ajaykumar Devarapalli
-//Description: 2-input Multipexer used for basic functional coverage example.
+//Description: 2-input 8-bit ALU used for basic functional coverage example.
 //------------------------------------------------------------------------------
 
-module mux2to1 (
+package defs_pkg;
+  typedef enum bit [1:0] {ADD, SUB, AND, OR} opcode_e;
+endpackage
+
+import defs_pkg::*;
+
+module alu(
   input logic [7:0] a, b,
-  input logic sel,
+  input opcode_e op,
   output logic [7:0] y
 );
-  assign y = sel ? b : a;
+  always_comb
+    case(op)
+      ADD: y = a + b;
+      SUB: y = a - b;
+      AND: y = a & b;
+      OR:  y = a | b;
+    endcase
 endmodule

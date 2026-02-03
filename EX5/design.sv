@@ -1,16 +1,21 @@
 //------------------------------------------------------------------------------
-//File       : and_gate.sv
+//File       : dff.sv
 //Author     : Narasimha/1BM23EC183
-//Created    : 2026-02-2
-//Module     : and_gate
+//Created    : 2026-02-3
+//Module     : dff
 //Project    : SystemVerilog and Verification (23EC6PE2SV),
 //Faculty    : Prof. Ajaykumar Devarapalli
-//Description: 2-input AND gate used for basic functional coverage example.
+//Description: D Flip Flop used for basic functional coverage example.
 //------------------------------------------------------------------------------
 
-module and_gate(
-	input logic a, b,
-  	output logic y
+module dff(
+	input clk, rst, d,
+  output reg q
 );
-  assign y = a & b;
+  always_ff @(posedge clk or posedge rst) begin
+    if(rst)
+      q <= 0;
+    else
+      q <= d;
+  end
 endmodule

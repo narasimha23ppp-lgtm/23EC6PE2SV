@@ -1,5 +1,13 @@
-// Code your testbench here
-// or browse Examples
+//------------------------------------------------------------------------------
+//File       : and_gate_tb.sv
+//Author     : Narasimha/1BM23EC183
+//Created    : 2026-02-2
+//Module     : tb
+//Project    : SystemVerilog and Verification (23EC6PE2SV),
+//Faculty    : Prof. Ajaykumar Devarapalli
+//Description: 2-input AND gate used for basic functional coverage example.
+//------------------------------------------------------------------------------
+
 `timescale 1ns/1ps
 
 module tb;
